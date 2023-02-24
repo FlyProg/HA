@@ -13,8 +13,9 @@ radio_play:
           {% endif %}'
         media_content_id:
           '{% if is_state("input_select.radio_station", "Radio Comercial") %} http://mcrscast1.mcr.iol.pt/comercial.mp3 
-          {% elif is_state("input_select.radio_station", "RFM") %} http://19553.live.streamtheworld.com:3690/RFM_SC 
-          {% elif is_state("input_select.radio_station", "M80") %} http://mcrscast.mcr.iol.pt/m80 {% elif is_state("input_select.radio_station", "CidadeFM") %} http://mcrscast.mcr.iol.pt/cidadefm 
+          {% elif is_state("input_select.radio_station", "RFM") %} https://20863.live.streamtheworld.com/RFM_SC 
+          {% elif is_state("input_select.radio_station", "M80") %} http://mcrscast.mcr.iol.pt/m80 
+          {% elif is_state("input_select.radio_station", "CidadeFM") %} http://mcrscast.mcr.iol.pt/cidadefm 
           {% elif is_state("input_select.radio_station", "Smooth FM") %} http://mcrscast.mcr.iol.pt/smoothfm 
           {% endif %}'
         media_content_type: audio/mp4
