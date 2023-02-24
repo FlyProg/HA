@@ -1,0 +1,33 @@
+radio_play:
+  alias: Play Radio
+  sequence:
+    - service: media_player.play_media
+      data_template:
+        entity_id:
+          '{% if is_state("input_select.chromecast_radio", "Sala") %} media_player.sala_display
+          {% elif is_state("input_select.chromecast_radio", "Suite") %} media_player.suite_speaker
+          {% elif is_state("input_select.chromecast_radio", "Escritorio") %} media_player.office_speaker
+          {% elif is_state("input_select.chromecast_radio", "Cozinha") %} media_player.kitchen_speaker
+          {% elif is_state("input_select.chromecast_radio", "Guest room") %} media_player.guest_speaker
+          {% elif is_state("input_select.chromecast_radio", "Everywhere") %} media_player.home_group
+          {% endif %}'
+        media_content_id:
+          '{% if is_state("input_select.radio_station", "Radio Comercial") %} http://mcrscast1.mcr.iol.pt/comercial.mp3 
+          {% elif is_state("input_select.radio_station", "RFM") %} http://19553.live.streamtheworld.com:3690/RFM_SC 
+          {% elif is_state("input_select.radio_station", "M80") %} http://mcrscast.mcr.iol.pt/m80 {% elif is_state("input_select.radio_station", "CidadeFM") %} http://mcrscast.mcr.iol.pt/cidadefm 
+          {% elif is_state("input_select.radio_station", "Smooth FM") %} http://mcrscast.mcr.iol.pt/smoothfm 
+          {% endif %}'
+        media_content_type: audio/mp4
+radio_stop:
+  alias: Stop radio
+  sequence:
+    - service: media_player.media_stop
+      data_template:
+        entity_id:
+          '{% if is_state("input_select.chromecast_radio", "Sala") %} media_player.sala_speaker
+          {% elif is_state("input_select.chromecast_radio", "Suite") %} media_player.suite_speaker
+          {% elif is_state("input_select.chromecast_radio", "Escritorio") %} media_player.office_speaker
+          {% elif is_state("input_select.chromecast_radio", "Cozinha") %} media_player.kitchen_speaker
+          {% elif is_state("input_select.chromecast_radio", "Guest room") %} media_player.guest_speaker
+          {% elif is_state("input_select.chromecast_radio", "Everywhere") %} media_player.home_group
+          {% endif %}'

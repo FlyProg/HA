@@ -1,0 +1,16 @@
+- alias: 'Set Radio Volume'
+  trigger:
+    platform: state
+    entity_id: input_number.volume_radio
+  action:
+    service: media_player.volume_set
+    data_template:
+      entity_id:
+        '{% if is_state("input_select.chromecast_radio", "Sala") %} media_player.sala_speaker
+        {% elif is_state("input_select.chromecast_radio", "Suite") %} media_player.suite_speaker
+        {% elif is_state("input_select.chromecast_radio", "Escritorio") %} media_player.office_speaker
+        {% elif is_state("input_select.chromecast_radio", "Cozinha") %} media_player.kitchen_speaker
+        {% elif is_state("input_select.chromecast_radio", "Guest room") %} media_player.guest_speaker
+        {% elif is_state("input_select.chromecast_radio", "Everywhere") %} media_player.home_group
+        {% endif %}'
+      volume_level: '{{  states.input_number.volume_radio.state  }}' 
