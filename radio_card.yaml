@@ -3,8 +3,15 @@ entities:
   - entity: input_select.radio_station
   - entity: script.radio_play
     icon: mdi:play
+    tap_action:
+      action: call-service
+      service: script.radio_play
+    secondary_info: none
   - entity: script.radio_stop
     icon: mdi:stop
+    tap_action:
+      action: call-service
+      service: script.radio_stop
   - entity: input_number.volume_radio
 type: entities
 state_color: true
